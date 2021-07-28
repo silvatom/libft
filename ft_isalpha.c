@@ -1,3 +1,5 @@
+#include "libft.h"
+
 int	ft_isalpha(int c)
 {
 	if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'))

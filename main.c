@@ -89,7 +89,7 @@ int	main(void)
 	char	*ptr;
 	ptr = ft_strchr(str3, 1);
 	printf("string: %s | %s | %s\n", str3, ptr, str3);
-	
+
 	char	str3[6] = {-1, 'm', 'o', 'a', 'r', 'a'};
 	char	str4[] = "amoara";
 	int		n;
@@ -119,7 +119,7 @@ int	main(void)
 	char	str4[] = "amor";
 	char	*ptr = NULL;
 	char	*ptr1 = NULL;
-	
+
 	memcpy(str3, ptr, 5);
 	printf("%s, %s, %s, %s\n", str3, str4, ptr, ptr1);*/
 
@@ -144,6 +144,38 @@ int	main(void)
 	printf("%s\n%s\n\norigignal: %d\npessoal: %d\n",
 	 str5, str6, memcmp(str5, str6, 11), \
 				  ft_memcmp(str5, str6, 11));*/
+
+	/*void	*ptr1;
+	void	*ptr2;
+
+	ptr1 = calloc(5, sizeof(char));
+	ptr2 = ft_calloc(5, sizeof(char));
+
+	printf("calloc: %s\nft_calloc: %s\n", (char*)ptr1, (char*)ptr2);
+
+	//printf("%lu\n", strlen(ptr2));
+	//strcpy(ptr2, "antonio");
+
+	//printf("calloc: %s\nft_calloc: %s\n", (char*)ptr1, (char*)ptr2);
+	*/
+
+	/*void	*ptr;
+	char	frase[] = "abbxcabcabcbabLinu axcabcbacba";
+	char	nome[] = " abc";
+
+	ptr = ft_strtrim(frase, nome);
+	printf("%s\n", frase);
+	printf("%s\n", ptr);
+	printf("%lu\n", ft_strlen(ptr));*/
+
+	char	**ptr;
+	char	frase[] = "antonio";
+	char	nome = 'o';
+
+	ptr = ft_split(frase, nome);
+	printf("%s\n", *ptr);
+	printf("%s\n", ptr[1]);
+	printf("%s\n", ptr[2]);
 
 	return (0);
 }

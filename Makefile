@@ -23,7 +23,13 @@ SOURCES=ft_atoi.c \
 		ft_memcpy.c \
 		ft_memmove.c \
 		ft_memchr.c \
-		ft_memcmp.c
+		ft_memcmp.c \
+		ft_calloc.c \
+		ft_strdup.c \
+		ft_substr.c \
+		ft_strjoin.c \
+		ft_strtrim.c \
+		ft_split.c
 
 
 OBJECTS=$(SOURCES:.c=.o)
@@ -44,5 +50,5 @@ fclean: clean
 
 re: fclean all
 #deletar esta regra antes de entregar
-a: $(SOURCES) $(HEADER) 
+a: $(SOURCES) $(HEADER)
 	@$(CC) main.c $(SOURCES) -lbsd
