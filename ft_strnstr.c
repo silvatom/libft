@@ -5,7 +5,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	unsigned int	i;
 	unsigned int	j;
 	unsigned int	lit_s;
-	int				count;
+	unsigned int	count;
 
 	lit_s = 0;
 	if (*needle == 0)

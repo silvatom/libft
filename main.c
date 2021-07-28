@@ -170,10 +170,10 @@ int	main(void)
 
 	char	**ptr;
 	char	frase[] = "antonio";
-	char	nome = 'o';
+	char	nome = 't';
 
 	ptr = ft_split(frase, nome);
-	printf("%s\n", *ptr);
+	printf("%s\n", ptr[0]);
 	printf("%s\n", ptr[1]);
 	printf("%s\n", ptr[2]);
 
