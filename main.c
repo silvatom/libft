@@ -7,7 +7,10 @@
 #include <bsd/string.h>
 #include <bsd/stdlib.h>
 #include <ctype.h>
+#include <unistd.h>
 
+
+static void	ft_lero(unsigned int n, char *s);
 int	main(void)
 {
 	/*void	*ptr1;
@@ -168,14 +171,50 @@ int	main(void)
 	printf("%s\n", ptr);
 	printf("%lu\n", ft_strlen(ptr));*/
 
-	char	**ptr;
-	char	frase[] = "antonio";
+	/*char	**ptr;
+	char	frase[] = "antoniotomttom";
 	char	nome = 't';
 
 	ptr = ft_split(frase, nome);
 	printf("%s\n", ptr[0]);
 	printf("%s\n", ptr[1]);
 	printf("%s\n", ptr[2]);
+	printf("%s\n", ptr[3]);
+	printf("%s\n", ptr[4]);
+	printf("%s\n", ptr[5]);*/
+
+	/*int n0 = -2147483648;
+	int n1 = 2147483647;
+	int n2 = 0;
+	int	n3 = -45;
+
+
+
+	printf("%s\n", ft_itoa(n0));
+	printf("%s\n", ft_itoa(n1));
+	printf("%s\n", ft_itoa(n2));
+	printf("%s\n", ft_itoa(n3));
+
+	char	ptr[] = "antonio";
+
+	printf("%s\n", ptr);
+	ft_striteri(ptr, ft_lero);
+
+	ft_putchar_fd('', 2);
+	ft_putchar_fd('\n', 2);
+
+
+	char	ptr[] = "antonio";
+	ft_putendl_fd(ptr, 1);*/
+
+	ft_putnbr_fd(-2147483648, 2);
+	ft_putchar_fd('\n', 2);
 
 	return (0);
+}
+
+static void	ft_lero(unsigned int n, char *s)
+{
+	if (n % 2 == 0)
+		s[n] -= 32;
 }

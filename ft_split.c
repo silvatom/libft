@@ -7,25 +7,35 @@ char	**ft_split(char const *s, char c)
 	char	**tab;
 	int		nstrs;
 	int		i;
+	int		strlen;
 
 	if (!s)
 		return (0);
 	nstrs = ft_wc((char *)s, c);
 	tab = malloc(nstrs * sizeof(char *));
+	if (!tab)
+		return (0);
 	i = 0;
 	while (i < nstrs)
 	{
-		tab[i] = malloc((7+1) * sizeof(char));
-		ft_strlcpy(tab[i], "antonio", 8);
+		while (*s && *s == c)
+			s++;
+		strlen = 0;
+		while (s[strlen] && s[strlen] != c)
+			strlen++;
+		tab[i] = ft_substr(s, 0, strlen);
+		// free
+		s += strlen /* +1 */;
 		i++;
 	}
+	tab[i] = 0;
 	return (tab);
 }
 
 static int	ft_wc(char *str, char c)
 {
 	int	count;
-	int i;
+	int	i;
 
 	count = 0;
 	i = 0;
