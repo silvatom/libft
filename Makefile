@@ -1,7 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/08/03 00:12:28 by anjose-d          #+#    #+#              #
+#    Updated: 2021/08/03 00:12:28 by anjose-d         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME=libft.a
 FLAGS=-Wall -Wextra -Werror
 CC=clang
+
 #deletar REGRA A NO FINAL DO ARQUIVO antes de entregar
+
 HEADER=libft.h
 SOURCES=ft_atoi.c \
 		ft_strlen.c \
@@ -38,6 +52,7 @@ SOURCES=ft_atoi.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c
 
+BONUS=
 
 OBJECTS=$(SOURCES:.c=.o)
 
@@ -50,12 +65,12 @@ $(NAME): $(OBJECTS)
 all: $(NAME)
 
 clean:
-	@rm -f $(OBJECTS)
+	rm -f $(OBJECTS)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
-#deletar esta regra antes de entregar
+
 a: $(SOURCES) $(HEADER)
 	@$(CC) main.c $(SOURCES) -lbsd

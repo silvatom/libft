@@ -1,6 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/03 00:10:54 by anjose-d          #+#    #+#             */
+/*   Updated: 2021/08/03 00:10:55 by anjose-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static int	ft_wc(char *str, char c);
+static int				ft_wc(char const *str, char c);
+static char				**free_tab(char **tab, size_t size);
+static const char		*skip_unwc(char const *ptr, int c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -11,28 +25,27 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (0);
-	nstrs = ft_wc((char *)s, c);
-	tab = malloc(nstrs * sizeof(char *));
+	nstrs = ft_wc(s, c);
+	tab = malloc(sizeof(char *) * (nstrs + 1));
 	if (!tab)
 		return (0);
-	i = 0;
-	while (i < nstrs)
+	i = -1;
+	while (++i < nstrs)
 	{
-		while (*s && *s == c)
-			s++;
+		s = skip_unwc(s, c);
 		strlen = 0;
 		while (s[strlen] && s[strlen] != c)
 			strlen++;
 		tab[i] = ft_substr(s, 0, strlen);
-		// free
-		s += strlen /* +1 */;
-		i++;
+		if (!tab)
+			return (free_tab(tab, i));
+		s += strlen + 1;
 	}
-	tab[i] = 0;
+	tab[nstrs] = 0;
 	return (tab);
 }
 
-static int	ft_wc(char *str, char c)
+static int	ft_wc(char const *str, char c)
 {
 	int	count;
 	int	i;
@@ -48,4 +61,22 @@ static int	ft_wc(char *str, char c)
 		i++;
 	}
 	return (count);
+}
+
+static char	**free_tab(char **tab, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < size)
+		free(tab[i++]);
+	free(tab);
+	return (0);
+}
+
+static const char	*skip_unwc(char const *ptr, int c)
+{
+	while (*ptr && *ptr == c)
+		ptr++;
+	return (ptr);
 }

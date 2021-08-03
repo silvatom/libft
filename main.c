@@ -9,6 +9,23 @@
 #include <ctype.h>
 #include <unistd.h>
 
+/* welton header */
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <bsd/string.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <time.h>
+
+#define BHRED "\e[1;91m"
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define YEL "\e[0;33m"
+#define reset "\e[0m"
+/* end */
+
+void	ft_print_result(char const *s);
 
 static void	ft_lero(unsigned int n, char *s);
 int	main(void)
@@ -62,25 +79,21 @@ int	main(void)
 	printf("strlcpy():%d\n%s\n", n, str1);
 	printf("%s\n", str2);
 	n = ft_strlcpy(str2, str3, 5);
-	printf("ft_strlcpy(): %d\n%s\n", n, str2);
+	printf("ft_strlcpy(): %d\n%s\n", n, str2);*/
 
-	char	str1[10];
-	char	str2[10];
-	char	str3[5];
-	strcpy(str1, "amor");
-	strcpy(str2, "amor");
-	strcpy(str3, "bolada");
-	printf("\n");
+	/*int n;
+	int	m;
+	char	str[15];
+	char	str1[15];
+	str[14] = 'a'; //14
+	str1[14] = 'a';
+	printf("strlcat: %s\n", str1);
+	printf("ft_strlcat: %s\n", str);
+	m = strlcat(str1, "lorem ipsom", 9);
+	n = ft_strlcat(str, "lorem ipsom", 9);
 
-	unsigned int	n;
-	printf("%s\n", str1);
-	n = strlcat(str1, str3, 11);
-	printf("strlcat():%d\n%s\n", n, str1);
-	char	str4[10] = "amor";
-	char	str5[10] = "bolada";
-	printf("%s\n", str4);
-	n = ft_strlcat(str4, str5, 11);
-	printf("ft_strlcat(): %d\n%s\n", n, str4);*/
+	printf("\nstrlcat(): %d\n%s\n", n, str1);
+	printf("ft_strlcat(): %d\n%s\n", n, str);*/
 
 	//printf("%c\n%c\n", toupper('d'), ft_toupper('d'));
 
@@ -134,12 +147,12 @@ int	main(void)
 	printf("deveria ser: %s\nEsta saindo: %s\n", str5, str6);
 	//printf("%p\n%p\n", &str5[0], &str5[1]);*/
 
-	/*char	str5[10] = "antonio";
+	/*char	str5[10] = "bonjour";
 	char	str6[10] = "antonio";
 	void	*ptr;
 
-	printf("%s\n%s\n", str5, memchr(ptr, 'o', 150));
-	printf("%s\n%s\n", str6, ft_memchr(ptr, 'o', 150));*/
+	printf("%s\n%s\n", str5, memchr("bonjourno", 'n', 2));
+	printf("%s\n%s\n", str5, ft_memchr("bonjourno", 'n', 2));*/
 
 	/*char	str5[10] = "antonio";
 	char	str6[10] = "anto";
@@ -207,8 +220,100 @@ int	main(void)
 	char	ptr[] = "antonio";
 	ft_putendl_fd(ptr, 1);*/
 
-	ft_putnbr_fd(-2147483648, 2);
-	ft_putchar_fd('\n', 2);
+
+	/*ft_putnbr_fd(-2147483648, 2);
+	ft_putchar_fd('\n', 2);*/
+
+	char	**tabstr;
+	int		i;
+
+	i = 0;
+	tabstr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+	while (tabstr[i])
+	{
+		ft_print_result(tabstr[i]);
+		i++;
+	}
+
+
+	/*////////////////////////////////
+    //         ft_split           //
+    ////////////////////////////////
+
+	clock_t t;
+	double time_taken;
+
+    t = clock();
+
+    // char    *ft_split_str = { "The-semiotics-spherical-chamber." };
+    char    *ft_split_str = { "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse" };
+  //char    *ft_split_str = { "      split       this for   me !       " };
+    char    **ft_split_res;
+
+    ft_split_res = ft_split(ft_split_str, ' ');
+
+    if (strcmp(ft_split_res[0], "lorem") == 0)
+        printf(GRN "FT_SPLIT:   [OK]" reset);
+    else
+        printf(RED "FT_SPLIT:   [KO]" reset);
+
+    if (strcmp(ft_split_res[1], "this") == 0)
+        printf(GRN " [OK]" reset);
+    else
+        printf(RED " [KO]" reset);
+
+    if (strcmp(ft_split_res[2], "for") == 0)
+        printf(GRN " [OK]" reset);
+    else
+        printf(RED " [KO]" reset);
+
+    if (strcmp(ft_split_res[3], "me") == 0)
+        printf(GRN " [OK]" reset);
+    else
+        printf(RED " [KO]" reset);
+
+    if (strcmp(ft_split_res[4], "!") == 0)
+        printf(GRN " [OK]" reset);
+    else
+        printf(RED " [KO]" reset);
+
+    if (ft_split_res[5] == NULL)
+        printf(GRN " [OK]" reset);
+    else
+        printf(RED " [KO]" reset);
+
+    if (ft_split(NULL, ' ') == NULL)
+        printf(GRN " [OK]" reset);
+    else
+        printf(RED " [KO]" reset);
+
+    // visual debug
+    printf("\nRES[0]: $%s$", ft_split_res[0]);
+    printf("\nRES[1]: $%s$", ft_split_res[1]);
+    printf("\nRES[2]: $%s$", ft_split_res[2]);
+    printf("\nRES[3]: $%s$", ft_split_res[3]);
+    printf("\nRES[4]: $%s$", ft_split_res[4]);
+    printf("\nRES[5]: $%s$", ft_split_res[5]);
+	printf("\nRES[6]: $%s$", ft_split_res[6]);
+	printf("\nRES[7]: $%s$", ft_split_res[7]);
+	printf("\nRES[8]: $%s$", ft_split_res[8]);
+	printf("\nRES[9]: $%s$", ft_split_res[9]);
+	printf("\nRES[10]: $%s$", ft_split_res[10]);
+	printf("\nRES[11]: $%s$", ft_split_res[11]);
+	printf("\nRES[12]: $%s$", ft_split_res[12]);
+    //printf("\nRES[6]: $%p$", ft_split_res[6]);
+    //printf("\nRES[7]: $%p$", ft_split_res[7]);
+
+    // printf("string 4 %s endereço 4 %p\n", ft_split_res[4] , ft_split_res[4]);
+    // printf("string 5 %s endereço 5 %p\n", ft_split_res[5] , ft_split_res[5]);
+    // printf("string 6 %s endereço 6 %p\n", ft_split_res[6] , ft_split_res[6]);
+    // printf("string 7 %s endereço 7 %p\n", ft_split_res[7] , ft_split_res[7]);
+
+    free(ft_split_res);
+
+    t = clock() - t;
+    time_taken = ((double)t)/CLOCKS_PER_SEC;
+    printf(" %0.6fs \n", time_taken);*/
 
 	return (0);
 }
@@ -217,4 +322,15 @@ static void	ft_lero(unsigned int n, char *s)
 {
 	if (n % 2 == 0)
 		s[n] -= 32;
+}
+
+void	ft_print_result(char const *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+	write(1, "\n", 1);
 }
