@@ -26,6 +26,7 @@
 /* end */
 
 void	ft_print_result(char const *s);
+static void		iter(unsigned int i, char *c);
 
 static void	ft_lero(unsigned int n, char *s);
 int	main(void)
@@ -224,7 +225,7 @@ int	main(void)
 	/*ft_putnbr_fd(-2147483648, 2);
 	ft_putchar_fd('\n', 2);*/
 
-	char	**tabstr;
+	/*char	**tabstr;
 	int		i;
 
 	i = 0;
@@ -233,7 +234,7 @@ int	main(void)
 	{
 		ft_print_result(tabstr[i]);
 		i++;
-	}
+	}*/
 
 
 	/*////////////////////////////////
@@ -315,6 +316,27 @@ int	main(void)
     time_taken = ((double)t)/CLOCKS_PER_SEC;
     printf(" %0.6fs \n", time_taken);*/
 
+
+	/*char	*str;
+
+	str = (char *)malloc(sizeof(*str) * 12);
+
+	strcpy(str, "LoReM iPsUm"); //lOrEm IpSuM
+	ft_striteri(str, &iter);
+	ft_print_result(str);
+
+	free(str);*/
+
+	char s[] = "bonjour";
+	char	*ptr;
+
+	printf("%s\n", s);
+
+	ptr = ft_strchr(s, 't' + 256);
+	/* 5 */ printf("%s\n", ptr);
+	ptr = strchr(s, 't' + 256);
+	/* 5 */ printf("%s\n", ptr);
+
 	return (0);
 }
 
@@ -333,4 +355,18 @@ void	ft_print_result(char const *s)
 		len++;
 	write(1, s, len);
 	write(1, "\n", 1);
+}
+
+static void		iter(unsigned int i, char *c)
+{
+	static int indexArray[11] = {0};
+
+	if (i > 10 || indexArray[i] == 1)
+		write(1, "wrong index\n", 12);
+	else
+		indexArray[i] = 1;
+	if (*c >= 'a' && *c <= 'z')
+		*c = *c - 32;
+	else if (*c >= 'A' && *c <= 'Z')
+		*c = *c + 32;
 }

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 00:11:11 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/08/03 00:11:11 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/08/03 16:40:36 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	i = 0;
 	while (s[i])
 	{
-		f(i, s);
+		f(i, s + i);
 		i++;
 	}
 }
