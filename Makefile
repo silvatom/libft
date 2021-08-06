@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/03 00:12:28 by anjose-d          #+#    #+#              #
-#    Updated: 2021/08/03 00:12:28 by anjose-d         ###   ########.fr        #
+#    Updated: 2021/08/06 16:45:21 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,9 +52,18 @@ SOURCES=ft_atoi.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c
 
-BONUS=
+SRCSBNS=ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c
 
 OBJECTS=$(SOURCES:.c=.o)
+BONUS_OBJS=$(SRCSBNS:.c=.o)
 
 %.o: %.c $(HEADER)
 	$(CC) $(FLAGS) -c $(SOURCES)
@@ -65,7 +74,7 @@ $(NAME): $(OBJECTS)
 all: $(NAME)
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) $(BONUS_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
@@ -73,4 +82,9 @@ fclean: clean
 re: fclean all
 
 a: $(SOURCES) $(HEADER)
-	@$(CC) main.c $(SOURCES) -lbsd
+	@$(CC) main.c $(SOURCES) $(SRCSBNS) -lbsd
+
+bonus: $(NAME) $(SRCSBNS) #out $(BONUS_OBJS)?
+	$(CC) $(FLAGS) -c $(SRCSBNS)
+	ar -rcs $(NAME) $(BONUS_OBJS)
+	$(CC) main.c $(SOURCES) $(SRCSBNS) -lbsd

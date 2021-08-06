@@ -234,61 +234,27 @@ int	main(void)
 	{
 		ft_print_result(tabstr[i]);
 		i++;
-	}*/
-
+	}
 
 	/*////////////////////////////////
     //         ft_split           //
     ////////////////////////////////
 
-	clock_t t;
+	/*clock_t t;
 	double time_taken;
 
     t = clock();
 
     // char    *ft_split_str = { "The-semiotics-spherical-chamber." };
-    char    *ft_split_str = { "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse" };
+    char    *ft_split_str = { "--1-2-3-4-5-6-7-8--8-8--8-4------4--4" };
   //char    *ft_split_str = { "      split       this for   me !       " };
     char    **ft_split_res;
 
-    ft_split_res = ft_split(ft_split_str, ' ');
-
-    if (strcmp(ft_split_res[0], "lorem") == 0)
-        printf(GRN "FT_SPLIT:   [OK]" reset);
-    else
-        printf(RED "FT_SPLIT:   [KO]" reset);
-
-    if (strcmp(ft_split_res[1], "this") == 0)
-        printf(GRN " [OK]" reset);
-    else
-        printf(RED " [KO]" reset);
-
-    if (strcmp(ft_split_res[2], "for") == 0)
-        printf(GRN " [OK]" reset);
-    else
-        printf(RED " [KO]" reset);
-
-    if (strcmp(ft_split_res[3], "me") == 0)
-        printf(GRN " [OK]" reset);
-    else
-        printf(RED " [KO]" reset);
-
-    if (strcmp(ft_split_res[4], "!") == 0)
-        printf(GRN " [OK]" reset);
-    else
-        printf(RED " [KO]" reset);
-
-    if (ft_split_res[5] == NULL)
-        printf(GRN " [OK]" reset);
-    else
-        printf(RED " [KO]" reset);
-
-    if (ft_split(NULL, ' ') == NULL)
-        printf(GRN " [OK]" reset);
-    else
-        printf(RED " [KO]" reset);
+    ft_split_res = ft_split(ft_split_str, '-');*/
 
     // visual debug
+	/*printf("\nRES[0]: $%s$", ft_split_res[0]);
+
     printf("\nRES[0]: $%s$", ft_split_res[0]);
     printf("\nRES[1]: $%s$", ft_split_res[1]);
     printf("\nRES[2]: $%s$", ft_split_res[2]);
@@ -302,17 +268,25 @@ int	main(void)
 	printf("\nRES[10]: $%s$", ft_split_res[10]);
 	printf("\nRES[11]: $%s$", ft_split_res[11]);
 	printf("\nRES[12]: $%s$", ft_split_res[12]);
+	printf("\nRES[12]: $%s$", ft_split_res[13]);*/
     //printf("\nRES[6]: $%p$", ft_split_res[6]);
     //printf("\nRES[7]: $%p$", ft_split_res[7]);
+	/*int i = 0;
+	while (ft_split_res[i])
+	{
+		printf("\nRES[%d]: $%s$", i, ft_split_res[i]);
+		free(ft_split_res[i]);
+		//printf("indice: %i - address: %p\n", i, &ft_split_res[i]);
+		i++;
+	}
+	free(ft_split_res);*/
 
     // printf("string 4 %s endereço 4 %p\n", ft_split_res[4] , ft_split_res[4]);
     // printf("string 5 %s endereço 5 %p\n", ft_split_res[5] , ft_split_res[5]);
     // printf("string 6 %s endereço 6 %p\n", ft_split_res[6] , ft_split_res[6]);
     // printf("string 7 %s endereço 7 %p\n", ft_split_res[7] , ft_split_res[7]);
 
-    free(ft_split_res);
-
-    t = clock() - t;
+    /*t = clock() - t;
     time_taken = ((double)t)/CLOCKS_PER_SEC;
     printf(" %0.6fs \n", time_taken);*/
 
@@ -327,15 +301,162 @@ int	main(void)
 
 	free(str);*/
 
-	char s[] = "bonjour";
+	/*char s[] = "bonjour";
 	char	*ptr;
 
-	printf("%s\n", s);
+	printf("%s\n", s);*/
 
-	ptr = ft_strchr(s, 't' + 256);
-	/* 5 */ printf("%s\n", ptr);
+	/*ptr = ft_strchr(s, 't' + 256);*/
+	/* 5  printf("%s\n", ptr);
 	ptr = strchr(s, 't' + 256);
-	/* 5 */ printf("%s\n", ptr);
+	5 printf("%s\n", ptr);*/
+
+	/*	TESTING ft_lstnew()	**
+	**						**
+	**						**
+	**						*/
+
+	/*t_list	*ptr;
+
+	ptr = ft_lstnew("ant");
+
+	printf("%s\n", (char *)ptr->content);
+	printf("%s\n", (char *)ptr->next)*/
+
+	/*	TESTING ft_lstadd_front()	**
+	**								**
+	**								**
+	**								*/
+
+	/*t_list	*elem1;
+	t_list	*elem2;
+	t_list	*head;
+	t_list	*new_first;
+
+	elem1 = ft_lstnew("primeiro");
+	elem2 = ft_lstnew("segundo");
+	head = elem1;
+	head->next = elem2;
+	new_first = ft_lstnew("novo primeiro");
+	printf("%s\n", (char *)head->content);
+	printf("%s\n\n", (char *)head->next->content);
+	//printf("%s\n", (char *)head->next->next->content);
+
+	ft_lstadd_front(&head, new_first);
+
+	printf("%s\n", (char *)head->content);
+	printf("%s\n", (char *)head->next->content);
+	printf("%s\n", (char *)head->next->next->content);*/
+
+	/*		TESTING ft_lstsize()	**
+	**								**
+	**								**
+	**								*/
+
+	/*t_list	*elem1 = ft_lstnew("primeiro");
+	t_list	*elem2 = ft_lstnew("segundo");;
+	t_list	*elem3 = ft_lstnew("terceiro");;
+	t_list	*elem4 = ft_lstnew("quarto");;
+	t_list	*head;
+
+	elem1->next = elem2;
+	elem2->next = elem3;
+	elem3->next = elem4;
+	elem4->next = NULL;
+	head = elem1;
+
+	printf("%s\n", (char *)head->content);
+	printf("%s\n", (char *)head->next->content);
+	printf("%s\n", (char *)head->next->next->content);
+	printf("%s\n", (char *)head->next->next->next->content);
+
+	printf("qtd nodes: %d\n", ft_lstsize(head));
+
+	printf("%s\n", (char *)head->content);
+	printf("%s\n", (char *)head->next->content);
+	printf("%s\n", (char *)head->next->next->content);
+	printf("%s\n", (char *)head->next->next->next->content);
+
+	printf("qtd nodes: %d\n", ft_lstsize(elem3));*/
+
+	/*		TESTING ft_lstlast()	**
+	**								**
+	**								**
+	**								*/
+
+	/*t_list	*elem1 = ft_lstnew("primeiro");
+	t_list	*elem2 = ft_lstnew("segundo");;
+	t_list	*elem3 = ft_lstnew("terceiro");;
+	t_list	*elem4 = ft_lstnew("quarto");;
+	t_list	*head;
+	t_list	*ptr;
+	t_list	*test = NULL;
+
+	elem1->next = elem2;
+	elem2->next = elem3;
+	elem3->next = elem4;
+	elem4->next = NULL;
+	head = elem1;
+
+	printf("%s\n", (char *)head->content);
+	printf("%s\n", (char *)head->next->content);
+	printf("%s\n", (char *)head->next->next->content);
+	printf("%s\n", (char *)head->next->next->next->content);
+
+	ptr = ft_lstlast(test);
+	printf("content ultimo node: %s\n", (char *)ptr->content);*/
+
+	/*	TESTING ft_lstadd_back()	**
+	**								**
+	**								**
+	**								*/
+
+	/*t_list	*elem1 = ft_lstnew("primeiro");
+	t_list	*elem2 = ft_lstnew("segundo");;
+	t_list	*elem3 = ft_lstnew("terceiro");;
+	t_list	*elem4 = ft_lstnew("quarto");;
+	t_list	*head;
+	t_list	*ptr = ft_lstnew("novo");
+
+	elem1->next = elem2;
+	elem2->next = elem3;
+	elem3->next = elem4;
+	elem4->next = NULL;
+	head = elem1;
+
+	ft_lstadd_back(&head, ptr);
+
+	printf("%s\n", (char *)head->content);
+	printf("%s\n", (char *)head->next->content);
+	printf("%s\n", (char *)head->next->next->content);
+	printf("%s\n", (char *)head->next->next->next->content);
+	printf("%s\n", (char *)head->next->next->next->next->content);*/
+
+	/*	TESTING ft_lstdelone()		**
+	**								**
+	**								**
+	**								*/
+
+	t_list	*elem1 = ft_lstnew("primeiro");
+	t_list	*elem2 = ft_lstnew("segundo");;
+	t_list	*elem3 = ft_lstnew("terceiro");;
+	t_list	*elem4 = ft_lstnew("quarto");;
+	t_list	*head;
+	t_list	*ptr = ft_lstnew("novo");
+
+	elem1->next = elem2;
+	elem2->next = elem3;
+	elem3->next = elem4;
+	elem4->next = NULL;
+	head = elem1;
+
+	ft_lstadd_back(&head, ptr);
+
+	printf("%s\n", (char *)head->content);
+	printf("%s\n", (char *)head->next->content);
+	printf("%s\n", (char *)head->next->next->content);
+	printf("%s\n", (char *)head->next->next->next->content);
+	printf("%s\n", (char *)head->next->next->next->next->content);
 
 	return (0);
 }
@@ -370,3 +491,4 @@ static void		iter(unsigned int i, char *c)
 	else if (*c >= 'A' && *c <= 'Z')
 		*c = *c + 32;
 }
+
