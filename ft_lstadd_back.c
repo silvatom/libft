@@ -6,9 +6,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 
 	if (!lst || !new)
 		return ;
-	tail = *lst;
-	while(tail->next)
-		tail = tail->next;
-	tail->next = new;
-	tail = new;
+	tail = ft_lstlast(*lst);
+	if (tail)
+		tail->next = new;
+	else
+		*lst = new;
 }

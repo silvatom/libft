@@ -27,8 +27,10 @@
 
 void	ft_print_result(char const *s);
 static void		iter(unsigned int i, char *c);
-
+static void	*ft_strtoupper(void *str);
 static void	ft_lero(unsigned int n, char *s);
+static void	ft_contdel(void	*str);
+
 int	main(void)
 {
 	/*void	*ptr1;
@@ -384,7 +386,7 @@ int	main(void)
 	**								**
 	**								*/
 
-	/*t_list	*elem1 = ft_lstnew("primeiro");
+	t_list	*elem1 = ft_lstnew("primeiro");
 	t_list	*elem2 = ft_lstnew("segundo");;
 	t_list	*elem3 = ft_lstnew("terceiro");;
 	t_list	*elem4 = ft_lstnew("quarto");;
@@ -403,8 +405,8 @@ int	main(void)
 	printf("%s\n", (char *)head->next->next->content);
 	printf("%s\n", (char *)head->next->next->next->content);
 
-	ptr = ft_lstlast(test);
-	printf("content ultimo node: %s\n", (char *)ptr->content);*/
+	ptr = ft_lstlast(head);
+	printf("content ultimo node: %s\n", (char *)ptr->content);
 
 	/*	TESTING ft_lstadd_back()	**
 	**								**
@@ -437,7 +439,7 @@ int	main(void)
 	**								**
 	**								*/
 
-	t_list	*elem1 = ft_lstnew("primeiro");
+	/*t_list	*elem1 = ft_lstnew("primeiro");
 	t_list	*elem2 = ft_lstnew("segundo");;
 	t_list	*elem3 = ft_lstnew("terceiro");;
 	t_list	*elem4 = ft_lstnew("quarto");;
@@ -456,8 +458,34 @@ int	main(void)
 	printf("%s\n", (char *)head->next->content);
 	printf("%s\n", (char *)head->next->next->content);
 	printf("%s\n", (char *)head->next->next->next->content);
-	printf("%s\n", (char *)head->next->next->next->next->content);
+	printf("%s\n", (char *)head->next->next->next->next->content);*/
 
+	/*		TESTING ft_lstmap()		**
+	**								**
+	**								**
+	**								*/
+
+	/*t_list	*elem1 = ft_lstnew("primeiro");
+	t_list	*elem2 = ft_lstnew("segundo");;
+	t_list	*elem3 = ft_lstnew("terceiro");;
+	t_list	*elem4 = ft_lstnew("quarto");;
+	t_list	*head;
+	t_list	*ptr = ft_lstnew("novo");
+
+	elem1->next = elem2;
+	elem2->next = elem3;
+	elem3->next = elem4;
+	elem4->next = NULL;
+	head = elem1;
+
+	elem1->content = ft_strtoupper(elem1->content);
+	elem2->content = ft_strtoupper(elem2->content);
+	//ft_lstmap(head, &ft_strtoupper, &ft_contdel);
+	ft_contdel(elem2->content);
+	printf("%s\n", (char *)head->content);
+	printf("%s\n", (char *)head->next->content);
+	printf("%s\n", (char *)head->next->next->content);
+	printf("%s\n", (char *)head->next->next->next->content);*/
 	return (0);
 }
 
@@ -492,3 +520,27 @@ static void		iter(unsigned int i, char *c)
 		*c = *c + 32;
 }
 
+static void	*ft_strtoupper(void *str)
+{
+	int i;
+	char	*str1;
+	void	*ptr;
+
+	str1 = malloc(11);
+	if (!str)
+		return (0);
+	i = 0;
+	while (*(char *)str)
+	{
+		str1[i] = *(char *)str - 32;
+		str++;
+		i++;
+	}
+	ptr = str1;
+	return (ptr);
+}
+
+static void	ft_contdel(void	*str)
+{
+	free(str);
+}

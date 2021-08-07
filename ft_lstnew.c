@@ -4,7 +4,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*nelem;
 
-	nelem = malloc(sizeof(ssize_t));
+	nelem = malloc(sizeof(t_list));
 	if (!nelem)
 		return (0);
 	nelem->content = content;
