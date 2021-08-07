@@ -6,12 +6,11 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 00:09:42 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/08/03 16:12:46 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/08/07 13:09:35 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int		ft_nlen(int n);
 static char		*ft_alloc_nstr(int n, int nlen);
@@ -20,9 +19,9 @@ char	*ft_itoa(int n)
 {
 	char	*str;
 	int		nlen;
-	int		neg;
+	int		negat;
 
-	neg = n < 0;
+	negat = n < 0;
 	if (n == -2147483648)
 	{
 		str = malloc(11 + 1);
@@ -31,7 +30,7 @@ char	*ft_itoa(int n)
 	}
 	nlen = ft_nlen(n);
 	str = ft_alloc_nstr(n, nlen);
-	if (neg)
+	if (negat)
 	{
 		n = -n;
 		str[0] = '-';
@@ -75,6 +74,9 @@ char	*ft_alloc_nstr(int n, int nlen)
 	if (!ptr)
 		return (NULL);
 	ptr[0] = '0';
-	ptr[nlen] = '\0';
+	if (n < 0)
+		ptr[nlen + 1] = '\0';
+	else
+		ptr[nlen] = '\0';
 	return (ptr);
 }
