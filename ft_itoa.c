@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 00:09:42 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/08/07 13:09:35 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/08/07 14:42:36 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ char	*ft_itoa(int n)
 	if (n == -2147483648)
 	{
 		str = malloc(11 + 1);
+		if (!str)
+			return (0);
 		ft_strlcpy(str, "-2147483648", 12);
 		return (str);
 	}
 	nlen = ft_nlen(n);
 	str = ft_alloc_nstr(n, nlen);
+	if (!str)
+		return (0);
 	if (negat)
 	{
 		n = -n;

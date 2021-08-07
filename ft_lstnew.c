@@ -9,6 +9,5 @@ t_list	*ft_lstnew(void *content)
 		return (0);
 	nelem->content = content;
 	nelem->next = NULL;
-
 	return (nelem);
 }
