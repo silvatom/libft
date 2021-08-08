@@ -6,15 +6,13 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/03 00:12:28 by anjose-d          #+#    #+#              #
-#    Updated: 2021/08/07 22:23:10 by anjose-d         ###   ########.fr        #
+#    Updated: 2021/08/08 03:35:37 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
 FLAGS=-Wall -Wextra -Werror
 CC=clang
-
-#deletar REGRA A NO FINAL DO ARQUIVO antes de entregar
 
 HEADER=libft.h
 SOURCES=ft_atoi.c \
@@ -85,5 +83,4 @@ fclean: clean
 
 re: fclean all
 
-#a: $(SOURCES) $(HEADER)
-#	$(CC) main.c $(SOURCES) $(SRCSBNS) -lbsd
+.PHONY:	all clean fclean re
