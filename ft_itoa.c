@@ -6,14 +6,15 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 00:09:42 by anjose-d          #+#    #+#             */
-/*   Updated: 2021/08/07 14:42:36 by anjose-d         ###   ########.fr       */
+/*   Updated: 2021/08/07 21:23:41 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_nlen(int n);
-static char		*ft_alloc_nstr(int n, int nlen);
+static int	ft_nlen(int n);
+static char	*ft_alloc_nstr(int n, int nlen);
+static char	*ft_intmin(void);
 
 char	*ft_itoa(int n)
 {
@@ -23,13 +24,7 @@ char	*ft_itoa(int n)
 
 	negat = n < 0;
 	if (n == -2147483648)
-	{
-		str = malloc(11 + 1);
-		if (!str)
-			return (0);
-		ft_strlcpy(str, "-2147483648", 12);
-		return (str);
-	}
+		return (ft_intmin());
 	nlen = ft_nlen(n);
 	str = ft_alloc_nstr(n, nlen);
 	if (!str)
@@ -83,4 +78,15 @@ char	*ft_alloc_nstr(int n, int nlen)
 	else
 		ptr[nlen] = '\0';
 	return (ptr);
+}
+
+static char	*ft_intmin(void)
+{
+	char	*str;
+
+	str = malloc(11 + 1);
+	if (!str)
+		return (0);
+	ft_strlcpy(str, "-2147483648", 12);
+	return (str);
 }

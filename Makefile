@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/03 00:12:28 by anjose-d          #+#    #+#              #
-#    Updated: 2021/08/07 08:27:57 by anjose-d         ###   ########.fr        #
+#    Updated: 2021/08/07 22:23:10 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,10 @@ $(NAME): $(OBJECTS)
 
 all: $(NAME)
 
+bonus: $(NAME) $(SRCSBNS)
+	$(CC) $(FLAGS) -c $(SRCSBNS)
+	ar -rcs $(NAME) $(BONUS_OBJS)
+
 clean:
 	rm -f $(OBJECTS) $(BONUS_OBJS)
 
@@ -81,10 +85,5 @@ fclean: clean
 
 re: fclean all
 
-a: $(SOURCES) $(HEADER)
-	@$(CC) main.c $(SOURCES) $(SRCSBNS) -lbsd
-
-bonus: $(NAME) $(SRCSBNS) #out $(BONUS_OBJS)?
-	$(CC) $(FLAGS) -c $(SRCSBNS)
-	ar -rcs $(NAME) $(BONUS_OBJS)
-	$(CC) main.c $(SOURCES) $(SRCSBNS) -lbsd
+#a: $(SOURCES) $(HEADER)
+#	$(CC) main.c $(SOURCES) $(SRCSBNS) -lbsd
