@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/03 00:12:28 by anjose-d          #+#    #+#              #
-#    Updated: 2021/08/08 03:35:37 by anjose-d         ###   ########.fr        #
+#    Updated: 2021/09/17 10:07:49 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ OBJECTS=$(SOURCES:.c=.o)
 BONUS_OBJS=$(SRCSBNS:.c=.o)
 
 %.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c $(SOURCES)
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJECTS)
 	ar -rcs $(NAME) $(OBJECTS)
