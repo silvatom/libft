@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/03 00:12:28 by anjose-d          #+#    #+#              #
-#    Updated: 2021/09/17 10:07:49 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/04/29 15:42:20 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,9 +71,8 @@ $(NAME): $(OBJECTS)
 
 all: $(NAME)
 
-bonus: $(NAME) $(SRCSBNS)
-	$(CC) $(FLAGS) -c $(SRCSBNS)
-	ar -rcs $(NAME) $(BONUS_OBJS)
+bonus:
+	@make OBJECTS="$(OBJECTS) $(BONUS_OBJS)" all
 
 clean:
 	rm -f $(OBJECTS) $(BONUS_OBJS)
@@ -83,4 +82,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re bonus
